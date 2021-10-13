@@ -60,5 +60,17 @@ def get_cookie():
     return error_message + message
 
 
+@app.route('/delete-cookie')
+def delete_cookie():
+    response = make_response("<h1>cookie is deleted</h1>")
+    response.delete_cookie('userID')
+    response.delete_cookie('email')
+    response.delete_cookie('token')
+    response.delete_cookie('last_access')
+    response.delete_cookie('country')
+
+    return response
+
+
 if __name__ == '__main__':
     app.run(debug=True)
